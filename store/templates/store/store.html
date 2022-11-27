@@ -207,8 +207,8 @@
                   <div class="card-body">
                     <!-- Badge--><span class="badge rounded-pill badge-success">New</span>
                     <!-- Wishlist Button--><a class="wishlist-btn" href="#"><i class="lni lni-heart">                       </i></a>
-                    <!-- Thumbnail --><a class="product-thumbnail d-block" href="single-product.html"><img class="mb-2" src="{{product.imageURL}}" alt="" height="200"></a>
-                    <!-- Product Title --><a class="product-title d-block" href="single-product.html">{{product.name}}</a>
+                    <!-- Thumbnail --><a class="product-thumbnail d-block" href="{% url 'product-detail' product.pk %}"><img class="mb-2" src="{{product.imageURL}}" alt="" height="200"></a>
+                    <!-- Product Title --><a class="product-title d-block" href="{% url 'product-detail' product.pk %}">{{product.name}}</a>
                     <!-- Product Price -->
                     <p class="sale-price">${{product.price|floatformat:2}}<span>$99</span></p>
                     <!-- Rating -->

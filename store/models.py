@@ -1,6 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
+from ckeditor.fields import RichTextField
+
 # Create your models here.
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('store')
 
 class Customer(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
@@ -14,11 +26,18 @@ class Customer(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=7, decimal_places=2 )
+    category = models.CharField(max_length=255, default = 'uncategorized')
+    description = RichTextField(blank=True, null=True)
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    image2 = models.ImageField(null=True, blank=True)
+    image3 = models.ImageField(null=True, blank=True)
     
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('store')
 
     @property
     def imageURL(self):

@@ -92,11 +92,11 @@
         <div class="sr-only">Loading...</div>
       </div>
     </div>
-    <!-- Header Area-->
+    {% block headerarea %}
     <div class="header-area" id="headerArea">
       <div class="container h-100 d-flex align-items-center justify-content-between">
         <!-- Logo Wrapper-->
-        <div class="logo-wrapper"><a href="{% url 'store' %}""><img src="{% static 'img/core-img/logo-small.png' %}" alt=""></a></div>
+        <div class="logo-wrapper"><a href="{% url 'store' %}"><img src="{% static 'img/core-img/logo-small.png' %}" alt=""></a></div>
         <!-- Search Form-->
         <div class="top-search-form">
           <form action="" method="">
@@ -112,6 +112,10 @@
       </a>
       </div>
     </div>
+    
+    {% endblock headerarea %}
+    <!-- Header Area-->
+    
     <div class="offcanvas offcanvas-start suha-offcanvas-wrap" tabindex="-1" id="suhaOffcanvas" aria-labelledby="suhaOffcanvasLabel">
       <!-- Close button-->
       <button class="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>

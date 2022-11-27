@@ -5,6 +5,8 @@ import json
 import datetime
 from .utils import cookieCart, cartData, guestOrder
 from django.views.decorators.csrf import csrf_exempt
+from django.views import generic
+from .models import Product
 
 
 # Create your views here.
@@ -16,6 +18,11 @@ def store(request):
     context = {"products": products, 'cartItems': cartItems}
     return render(request, 'store/store.html', context)
 
+class ProductDetailView(generic.DetailView):
+    model = Product
+    template_name = 'store/product_details.html'
+
+   
 def cart(request):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -37,7 +44,7 @@ def checkout(request):
 
     context = {'items': items, 'order':order, 'cartItems': cartItems}
 
-    return render(request, 'store/checkouts.html', context)
+    return render(request, 'store/checkout.html', context)
 
 def updateItem(request):
     data = json.loads(request.body)
