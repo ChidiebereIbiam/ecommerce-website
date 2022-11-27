@@ -91,7 +91,11 @@ def processOrder(request):
             address=data['shipping']['address'],
             city = data['shipping']['city'],
             state = data['shipping']['state'],
-            zipcode=data['shipping']['zipcode'],
+           
         )
     
     return JsonResponse('Payment complete!...', safe=False)
+
+def payment_success(request):
+    
+    return render(request, 'store/payment-success.html', {})

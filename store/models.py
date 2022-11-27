@@ -6,6 +6,7 @@ class Customer(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null = True)
     email = models.CharField(max_length=200)
+    phone = models.CharField(unique=True, max_length=15)
 
     def __str__(self):
         return self.name
@@ -78,7 +79,7 @@ class ShippingAddress(models.Model):
     address = models.CharField (max_length=200, null = False)
     city = models.CharField (max_length=200, null = False)
     state = models.CharField (max_length=200, null = False)
-    zipcode = models.CharField (max_length=200, null = False)
+    
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
